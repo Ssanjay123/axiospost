@@ -16,200 +16,29 @@
         </form>
         <ul id='listOfUsers'></ul>
         <script>
-// class Stack{
-//     constructor(){
-//         this.item = [];
-//         this.count = 0;
-//     }
-//     push(element){
-//         this.item[this.count]=element;
-//         this.count += 1;
-//         console.log(`${element} is added to ${this.count}`)
-//         // return this.count -1;
-//     }
-// }
-
-//            let stk = new Stack();
-//             stk.push(10);
-//             stk.push(20);
-//             stk.push(30);
-
-
-// let user = prompt('Enter S,G or W');
-// let cpui = Math.floor(Math.random() * 3);
-// let cpu = ["S","G","W"][cpui]
-
-// let match = (xyz,abc)=>{
-//     if(cpu === user){
-//         return 0;
-//     }
-//     else if(cpu === "S" && user === "G"){
-//         return 'User'
-//     }
-//     else if(cpu === "S" && user === "W"){
-//         return 'Cpu'
-//     }
-//     else if(cpu === "G" && user === "S"){
-//         return 'Cpu'
-//     }
-//     else if(cpu === "G" && user === "W"){
-//         return 'User'
-//     }
-//     else if(cpu === "W" && user === "G"){
-//         return 'Cpu'
-//     }
-//     else if(cpu === "W" && user === "S"){
-//         return 'User'
-//     }
-// }
-// let result = match(cpu,user);
-// console.log(`CPU:${cpu} USER:${user} The winner is ${result}`);
-        
-
-// class Queue{
-//     constructor(){
-//         this.queue = [];
-//     }
-//     push(item){
-//       this.queue.push(item)
-//     }
-//     pop(){
-//         this.queue.shift();
-//     }
-//     display(){
-//         console.log(this.queue);
-//     }
-// }
-// let queue1 = new Queue();
-// queue1.push(100)
-// queue1.push(200)
-// queue1.push(300)
-// queue1.display();
-// queue1.pop();
-// queue1.pop();
-// queue1.display();
-
-// let posts = [
-//               {title : 'Post One',body :'This is post one',createdAt : new Date().getTime()},
-//               {title : 'Post Two',body :'This is post two',createdAt : new Date().getTime()}
-//             ];
-
-//    let intervalID = 0;
-//           function getPost(){
-//             clearInterval(intervalID)
-//            intervalID = setInterval(()=>{
-//                 let output = '';
-//                 posts.forEach((post,index)=>{
-//                     output += `<li>${post.title}</li> last updated ${(new Date().getTime() - post.createdAt)/1000}secs ago`
-//                 })
-//                 console.log('time running id= ' , intervalID)
-//                 document.body.innerHTML = output;
-//             },1000);
-//           }
-       
-//             function createPost(post,callback){
-//                 setTimeout(()=>{
-//                 posts.push({...post,createdAt : new Date().getTime()});
-//                 callback();
-//             },2000)
-//             }
-
-//             function create4thPost(post2,callback){
-//                 setTimeout(()=>{
-//                     posts.push({...post2,createdAt : new Date().getTime()})
-//                     callback();
-//                 },2000)
-//             }
-
-// //             createPost({title : 'Post Three',body : 'This is post three'},getPost);
-// //              create4thPost({title : 'Post Four',body : 'This is post four'},getPost);
-
-             let posts = [
-              {title : 'Post One',body :'This is post one'},
-              {title : 'Post Two',body :'This is post two'}
-            ];
-
-   
-          function getPost(){
-              setTimeout(()=>{
-                let output = '';
-                posts.forEach((post,index)=>{
-                    output += `<li>${post.title}</li>`
-                })
-                document.body.innerHTML = output;
-            },1000);
-          }
-          
-       
-            function createPost(post){
-                return new Promise ((resolve,reject) =>{
-                setTimeout(()=>{
-                posts.push(post);
-                const error = false;
-                 
-                if(!error){
-                    resolve();
-                }
-                else{
-                    reject('Error:something went wrong');
-                }
-            },1000)
-        })
-            }
-            function deletePost(){
-            return new Promise((resolve,reject) =>{
-            setTimeout(()=>{
-           if(posts.length>0){
-            const lastName = posts.pop()
-                resolve(lastName);
-            }
-            else{
-                reject('Error : Array is empty now.');
-            }
-            },1000);
-          });
-        };
-
-        const user = {
-            username : 'Balaji',
-            lastActivityTime : new Date().getTime()
-        }
-        function updateLastAcivityTime(){
-            return new Promise((resolve,reject)=>
-            setTimeout(() => {
-               user.lastActivityTime = new Date().getTime();
-               resolve(user.lastupdatedTime);  
-            }, 1000));
-        }
-        function userUpdatesPost(){
-            Promise.all([createPost,updateLastAcivityTime]).then(([a,b]) =>{
-                console.log(b);
-            })
-        }
-        userUpdatesPost();
-        
-            // createPost({title : 'Post Three',body : 'This is post three'})
-            // .then(()=>{
-            //     getPost();
-            //     deletePost().then(()=>{
-            //         getpost();
-            //         deletePost().then(()=>{
-            //             getPost();
-            //             deletePost().then(()=>{
-            //             getPost();
-            //             deletePost().then(()=>{})
-            //             .catch((err)=> {
-            //                 console.log(err)
-            //             })
-            //               .catch((err)=> {})
-                            
-            //              }).catch((err)=>{})
-            //           })
-            //        })
-            //     })
-            //       .catch(err=> console.log(err));
             
+        console.log('person1: shows ticket')
+         console.log('person2: shows ticket')
+         let preMovie = async ()=>{
+            const promiseWifeBringingTicks = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve('ticket');
+                },3000)
+            })
+            let getPopcorn = new Promise((resolve,reject)=>resolve('popcorn'));
+            let getButter = new Promise((resolve,reject)=>resolve( 'butter'));
+            let getCandy = new Promise((resolve,reject)=>resolve('candy'));
+            let getColdDrink =  new Promise((resolve,reject)=>resolve('cold drink'));
+        let ticket = await promiseWifeBringingTicks;
 
+        let [popcorn,candy,coke] = await Promise.all([getPopcorn,getButter,getCandy,getColdDrink]);
+          console.log(`${getPopcorn}, ${getButter}, ${getCandy}, ${getColdDrink}`)
+         return ticket;
+        }
+        preMovie().then((m)=>console.log(m));
+               console.log('person4: shows ticket')
+         console.log('person5: shows ticket')
+        
     
 
 
