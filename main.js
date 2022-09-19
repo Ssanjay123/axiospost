@@ -1,7 +1,9 @@
 axios.defaults.headers.common['X-Auth-token']='sometoken'
 function getTodos() {
-  axios('https://jsonplaceholder.typicode.com/todos')
-  .then(res=> showOutput(res))
+  axios('https://jsonplaceholder.typicode.com/todos?_limit=5')
+  .then(res=>{
+    console.log(res)
+    showOutput(res)})
   .catch(err => console.error(err));
 }
 
@@ -67,7 +69,7 @@ function transformResponse() {
     data : {
       title : 'Hello World'
     },
-    transformResponse: axios.defauls.transformResponse.concat(data=>{
+    transformResponse: axios.defaults.transformResponse.concat(data=>{
       data.title = data.title.toUpperCase();
       return data;
     })
